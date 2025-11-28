@@ -11,7 +11,7 @@ app.use(express.static('.')); // 让电脑把当前文件夹变成网站
 // ================================================================
 // ⚠️ 请填入你的 MongoDB 连接字符串
 // 建议去 MongoDB Atlas 修改密码，这里不要用之前泄露的密码
-const MONGO_URI = 'mongodb+srv://liucheng19881103_db_user:ueA7DDuDQCOiGugo@pokersave.sz7bsqp.mongodb.net/?appName=pokersave';
+const MONGO_URI = process.env.MONGO_URI;
 // ================================================================
 
 const JWT_SECRET = 'PokerCloud_Secret_Key_2024'; // 用于加密 Token 的密钥
@@ -142,4 +142,5 @@ app.delete('/api/hands/:id', auth, async (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, '0.0.0.0', () => console.log(`🚀 Server running on Port ${PORT}`));
